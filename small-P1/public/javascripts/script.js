@@ -1,0 +1,1 @@
+alert("Sign up is required.")
