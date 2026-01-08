@@ -1,4 +1,4 @@
-import { User } from "../models/user.models";
+import { User } from "../models/user.models.js";
 
 const registerUser = async (req,res)=>{
    
@@ -22,7 +22,7 @@ const registerUser = async (req,res)=>{
             username,
             email,
             password,
-            loggenIn: false
+            loggedIn: false
         })
 
         res.status(201).json({
@@ -31,7 +31,8 @@ const registerUser = async (req,res)=>{
         })
         
     } catch (error) {
-        return res.status(500).json("Server error aayya my dear!")
+        console.error(`Register Error`,error)
+        return res.status(500).json({message: error.message})
     }
 }
 
