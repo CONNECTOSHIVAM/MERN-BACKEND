@@ -11,6 +11,6 @@ import postRouter from "./routes/post.routes.js";
 
 //route declaration
 app.use('/api/v1/users',userRouter);
-app.use('/api/v1/posts',postRouter)
+app.use('/api/v1/post',postRouter)
 
 export default app;
