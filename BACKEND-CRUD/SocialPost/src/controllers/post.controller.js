@@ -25,5 +25,18 @@ const createPost = async (req,res) => {
     }
 }
 
+//read the all posts.
+const getPost = async (req,res) => {
 
-export {createPost};
+    try {
+        
+        const posts = await Post.find();
+        res.status(200).json(posts)
+    } catch (error) {
+        console.error("getPost Error ",error);
+        return res.send(500).json({message: "Internal server error."})
+    }
+}
+
+
+export {createPost, getPost};
