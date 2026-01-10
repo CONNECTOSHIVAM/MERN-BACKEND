@@ -65,4 +65,29 @@ const loginUser = async (req,res) => {
     }
 }
 
-export {registerUser, LoggedIn}
+const logoutUser = async () => {
+
+    try {
+
+        const {email} = req.body;
+
+        const user = await User.findOne({email})
+
+        if(!user) return res.status(404).json({
+            message: "User is not found -- try to register first."
+        })
+
+        res.status(200).json({
+            message: "User logout successfully."
+        })
+        
+    } catch (error) {
+        console.error("Logout server error :",error)
+        return res.status(500).json({
+            message: "server error: "+error.message
+        })
+    }
+
+}
+
+export {registerUser, loginUser, logoutUser}
