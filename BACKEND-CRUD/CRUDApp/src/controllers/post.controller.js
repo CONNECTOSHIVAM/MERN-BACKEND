@@ -53,6 +53,7 @@ const updatePost = async(req,res) => {
         res.status(200).json({
             message: "Post Updated Successfully",post
         })
+        
 
 
     } catch (error) {
