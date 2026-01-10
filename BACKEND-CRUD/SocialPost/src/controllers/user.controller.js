@@ -18,8 +18,34 @@ const registerUser = async (req,res) => {
             return res.status(400).json({message: "user is already exists."})
         }
 
+        //create a User.
+        const user = await User.create({
+            username,
+            email,
+            password,
+            LoggedIn: false
+        })
+
+        res.status(201).json({
+            message: "User successfully registered.",
+            user: {id: user._id,username: user.username,email: user.email}
+        })
+
+
+    } catch (error) {
+        console.error(`Registration Error hu main : ${error}`)
+        return res.status(500).json({message: error.message})
+    }
+}
+
+const loginUser = async (req,res) => {
+
+    try {
+         const {email, password} = req.body;
 
     } catch (error) {
         
     }
 }
+
+export {registerUser}
