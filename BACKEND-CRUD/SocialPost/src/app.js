@@ -6,8 +6,10 @@ app.use(express.urlencoded({extended: true}))
 
 //import the routes.
 import userRouter from './routes/user.routes.js'
+import postRouter from './routes/post.routes.js'
 
 //route declarations...
-app.use('/api/v1/users',userRouter)
+app.use('/api/v1/users',userRouter);
+app.use('/api/v1/post',postRouter)
 
 export default app;
