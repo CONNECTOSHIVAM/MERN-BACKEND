@@ -54,7 +54,7 @@ const loginUser = async (req,res) => {
             {message: "enter the correct details."}
          )
 
-         res.status(500).json({
+         res.status(200).json({
             message: "successfully Loggen In Dear...",
             user: {id: user._id, username: user.username,email: user.email}
          })
