@@ -9,7 +9,7 @@ const videoSchema = new Schema({
     },
     thumbnail: {
         type: String,
-        required: trua,
+        required: true,
     },
     owner: {
         type: Schema.Types.ObjectId,
