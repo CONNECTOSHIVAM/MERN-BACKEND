@@ -39,7 +39,7 @@ const userSchema = new Schema({
        type: String,
        required: [true, "password is required."]
     },
-    avtar:{
+    avatar:{
         type: String, // cloudnaryurl
         required: true
     },
