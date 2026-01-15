@@ -23,7 +23,7 @@ const registerUser = asyncHandler( async(req, res)=>{
     // return res
 
     const {username, email, fullName, password} = req.body
-    console.log(req.files);
+    console.log(password);
 
 
     if(
