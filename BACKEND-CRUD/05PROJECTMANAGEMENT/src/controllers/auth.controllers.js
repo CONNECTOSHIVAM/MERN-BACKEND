@@ -76,5 +76,16 @@ const registerUser = asyncHandler(async(req, res)=>{
 
 })
 
+const login = asyncHandler(async(req,res)=>{
 
-export {registerUser}
+    const { email, username, password } = req.body;
+
+    if(!username || !email ){
+        throw new ApiError(4
+    }
+
+
+})
+
+
+export {registerUser, login}
