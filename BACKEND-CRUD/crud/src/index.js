@@ -12,7 +12,7 @@ const startServer = async () => {
         await connectDB()
 
         app.get('/',(req,res)=>{
-           res.send("MongoDB Successfully Connected.")
+           res.send(`<h1>MongoDB Successfully Connected.</h1>`)
         })
 
         app.on("error",(error)=>{
