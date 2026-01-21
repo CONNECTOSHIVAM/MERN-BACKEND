@@ -1,4 +1,4 @@
-import { User } from "../models/user.model";
+import { User } from "../models/user.model.js";
 
 const registerUser = async (req,res)=> {
 
@@ -25,7 +25,7 @@ const registerUser = async (req,res)=> {
 
         const user = await User.create({
             username,
-            email: email.toLowerCase,
+            email: email.toLowerCase(),
             password,
             loggedIn : false
         })
