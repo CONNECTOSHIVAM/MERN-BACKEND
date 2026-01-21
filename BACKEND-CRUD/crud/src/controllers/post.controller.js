@@ -40,9 +40,11 @@ const updatePost = async (req, res) => {
 
     try {
 
-        const {name, description, age} = req.body;
+        if(Object.keys(req.body).length === 0){
+            return res.status(400).json({message: "no data provide for update"})
+        }
 
-        
+
 
 
         
