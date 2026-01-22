@@ -23,7 +23,8 @@ const generateAccessAndRefreshTokens = async (userId) => {
 const registerUser = asyncHandler(async(req, res)=>{
 
   
-    const {username, email, role, password} = req.body
+     try {
+            const {username, email, role, password} = req.body
 
     const existedUser = await User.findOne({
         $or: [{username, email}]
@@ -72,13 +73,19 @@ const registerUser = asyncHandler(async(req, res)=>{
             "User registered successfully and verification email has been sent on your email."
         )
     )
+        
+     } catch (error) {
+        
+        console.error("register error ||"+error.message)
+     }
 
 
 })
 
 const login = asyncHandler(async(req,res)=>{
 
-    const { email, username, password } = req.body;
+    try {
+        const { email, username, password } = req.body;
 
     if(!username || !email ){
         throw new ApiError(400,"Username or email is must required.")
@@ -130,6 +137,9 @@ const login = asyncHandler(async(req,res)=>{
                     )
                 )
 
+    } catch (error) {
+        console.error("login server error"+error.message)
+    }
 
 })
 
