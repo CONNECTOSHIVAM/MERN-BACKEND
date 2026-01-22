@@ -3,7 +3,7 @@ import express from "express"
 const app = express()
 
 app.use(express.json())
-app.use(express.urlencoded())
+app.use(express.urlencoded({extended: true}))
 
 //import the routes
 import userRouter from './routes/user.route.js'

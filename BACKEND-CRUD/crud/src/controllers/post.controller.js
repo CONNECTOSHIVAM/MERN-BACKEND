@@ -44,6 +44,11 @@ const updatePost = async (req, res) => {
             return res.status(400).json({message: "no data provide for update"})
         }
 
+        const post = await Post.findByIdAndUpdate(req.params.id, req.body, {new: true})
+
+        if(!post) return res.status(404).json({message: "post not found."})
+
+        res.status(200).json({message: "Post is deleted successfully."})
 
 
 
