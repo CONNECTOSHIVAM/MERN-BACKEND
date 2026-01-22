@@ -33,7 +33,8 @@ const lookPost = async (req, res) => {
     } catch (error) {
         
         console.error("Server error of lookPost ||",error)
-        return res.status(500).json({message: " Server is error ||"+error.message})    }
+        return res.status(500).json({message: " Server is error ||"+error.message})    
+    }
 }
 
 const updatePost = async (req, res) => {
@@ -54,6 +55,9 @@ const updatePost = async (req, res) => {
 
         
     } catch (error) {
+
+        console.error(`Post updation error : || ${error.message}`)
+        res.status(500).json({message: "Internal server error......"})
         
     }
 }
