@@ -23,7 +23,7 @@ const userRegisterValidator = () => {
            .withMessage("password is must required")
            .isLength({min:6})
            .withMessage("password must be at least of 6 character."),
-        body("fullName").optional.trim(),
+        body("fullName").optional().trim(),
            
     ]
 }
