@@ -53,4 +53,21 @@ const updatePost = async (req, res) => {
     }
 }
 
-export {createPost, lookPost, updatePost}
+const deletePost = async (req,res) => {
+
+    try {
+
+        const deleted = await Post.findByIdAndUpdate(req.params.id);
+        if(!deleted) return res.status(400).json({message: "Post not found."})
+
+        res.status(200).json({message: "Post deleted is successfuly."})
+
+        
+    } catch (error) {
+        
+        console.error(`Server error from the delete Post. ||${error.message}`)
+        res.status(500).json("Internal server issue...")
+    }
+}
+
+export {createPost, lookPost, updatePost, deletePost}
