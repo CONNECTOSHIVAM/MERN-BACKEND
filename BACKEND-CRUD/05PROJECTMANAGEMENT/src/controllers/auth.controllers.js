@@ -353,43 +353,43 @@ const forgetPasswordRequest = asyncHandler(async(req, res)=>{
             )
 })
 
-// const resetForgotPassword = asyncHandler(async(req, res)=>{
+const resetForgotPassword = asyncHandler(async(req, res)=>{
 
-//     const {resetToken} = req.params
-//     const {newPassword} = req.body
+    const {resetToken} = req.params
+    const {newPassword} = req.body
 
-//     let hashedToken = crypto
-//                         .createHash("sha256")
-//                         .update(resetToken)
-//                         .digest("hex")
+    let hashedToken = crypto
+                        .createHash("sha256")
+                        .update(resetToken)
+                        .digest("hex")
 
 
-//    const user = await User.findOne({
-//      forgetPasswordToken: hashedToken,
-//      forgetPasswordTokenExpiry: {$gt: Date.now( )}
-//    })
+   const user = await User.findOne({
+     forgetPasswordToken: hashedToken,
+     forgetPasswordTokenExpiry: {$gt: Date.now( )}
+   })
 
-//    if(!user)
-//    {
-//     throw new ApiError(489,"Token is inavalid or expired.")
-//    }
+   if(!user)
+   {
+    throw new ApiError(489,"Token is inavalid or expired.")
+   }
 
-//    user.forgetPasswordTokenExpiry = undefined
-//    user.forgetPasswordToken = undefined
+   user.forgetPasswordTokenExpiry = undefined
+   user.forgetPasswordToken = undefined
 
-//    user.password = newPassword
-//    await user.save({validateBeforeSave: false})
+   user.password = newPassword
+   await user.save({validateBeforeSave: false})
 
-//    return res
-//            .status(200)
-//            .json(
-//              new ApiResponse(
-//                 200,
-//                 {},
-//                 "Password reset successfully."
-//              )
-//            )
-// })
+   return res
+           .status(200)
+           .json(
+             new ApiResponse(
+                200,
+                {},
+                "Password reset successfully."
+             )
+           )
+})
 
 // const changeCurrentPassword = asyncHandler(async(req,res)=>{
 
