@@ -194,6 +194,26 @@ const addMembersToProjects = asyncHandler(async(req, res)=>{
 
 const getProjectMember = asyncHandler(async(req,res)=>{
 
+    const {projectId} = req.params;
+    const project = await Project.findById(req.params);
+
+    if(!project)
+    {
+        throw new ApiError(404, "Project not found.");
+    }
+
+    const projectMembers = await ProjectMember.aggregate([
+        {
+            $match:{
+               project: new mongoose.Types.ObjectId(projectId);
+            },
+        },
+        {
+            $lookup:{
+                from: 
+            }
+        }
+    ])
 })
 
 const updateMemberRole = asyncHandler(async(req,res)=>{
