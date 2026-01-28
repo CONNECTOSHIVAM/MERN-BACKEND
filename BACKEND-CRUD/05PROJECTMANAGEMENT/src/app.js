@@ -22,10 +22,12 @@ app.use(cors({
 
 import healthCheckRouter from './routes/healthcheck.routes.js'
 import authRouter from './routes/auth.route.js'
+import projectRouter from './routes/project.routes.js'
 
 
 app.use("/api/v1/healthchek",healthCheckRouter);
 app.use("/api/v1/auth",authRouter)
+app.use("/api/v1/projects",projectRouter)
 
 app.get('/',(req,res)=>{
     res.send("Hi ConnectoShivam!")
