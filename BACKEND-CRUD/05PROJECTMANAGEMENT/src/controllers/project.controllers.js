@@ -290,6 +290,25 @@ const updateMemberRole = asyncHandler(async(req,res)=>{
 
 const deleteMember = asyncHandler(async(req, res)=>{
 
+    const {projectId, userId} = req.params;
+
+    let projectMember = await ProjectMember.findOneAndDelete(
+        projectMember._id,
+    )
+
+    if(!projectMember){
+        throw new ApiError(400, "Project member is not found.")
+    }
+
+    return res
+            .status(200)
+            .json(
+                new ApiResponse(
+                    200,
+                    projectMember,
+                    "Member successfully deleted."
+                )
+            )
 })
 
 export {getProjects, getProjectById, createProject, updateProjects, deleteProjects, addMembersToProjects, getProjectMember, updateMemberRole, deleteMember}
