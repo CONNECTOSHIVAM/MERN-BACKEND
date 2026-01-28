@@ -27,4 +27,20 @@ router
         deleteProjects
     )
 
+router
+    .route("/:projectId/members")
+    .get(getProjectMember)
+    .post(
+        validateProjectPermission([UserRolesEnum.ADMIN]),
+        addMembersToProjectValidator(),
+        validate(),
+        addMembersToProjects
+    )
+
+router
+    .route("/:projectId/members/:userId")
+    .put(validateProjectPermission([UserRolesEnum.ADMIN]),updateMemberRole)
+    .delete(validateProjectPermission([UserRolesEnum.ADMIN]),deleteMember)
+
+
 export default router;
