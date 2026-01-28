@@ -102,4 +102,4 @@ const addMembersToProjectValidator = () => {
    ]
 }
 
-export {userRegisterValidator, userLoginValidator, userChangeCurrentPasswordValidator, userForgotPasswordValidator, userResetForgotPasswordValidator}
+export {userRegisterValidator, userLoginValidator, userChangeCurrentPasswordValidator, userForgotPasswordValidator, userResetForgotPasswordValidator, createProjectValidator, addMembersToProjectValidator}
