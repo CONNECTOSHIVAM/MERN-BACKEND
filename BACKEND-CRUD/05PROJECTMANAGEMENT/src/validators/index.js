@@ -1,4 +1,6 @@
 import {body} from "express-validator"
+import { AvailableUserRole } from "../utils/constants.js"
+import { TaskStatusEnum } from "../utils/constants.js"
 
 
 const userRegisterValidator = () => {
@@ -69,6 +71,34 @@ const userResetForgotPasswordValidator = () => {
       body("newPassword")
              .isEmpty()
              .withMessage("new password is required.")
+   ]
+}
+
+const createProjectValidator = () => {
+
+   return [
+      body("name")
+         .notEmpty()
+         .withMessage("Name is required."),
+      body("description").optional(),
+
+   ]
+}
+
+const addMembersToProjectValidator = () => {
+
+   return [
+      body("email")
+         .trim()
+         .notEmpty()
+         .withMessage("email is reuired.")
+         .isEmail()
+         .withMessage("Email is invalid."),
+      body("role")
+         .notEmpty()
+         .withMessage("role is invalid.")
+         .isIn(AvailableUserRole)
+         .withMessage("Role is invalid.")
    ]
 }
 
